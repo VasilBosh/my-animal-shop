@@ -36,14 +36,49 @@ export default function CTA() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setOrderSubmitted(true);
-    setTimeout(() => {
-      setOrderSubmitted(false);
-      setFormData({ name: '', phone: '', email: '', city: '', officeAddress: '', notes: '' });
-    }, 5000);
+    
+    // 1. Подготвяме данните от формата за изпращане
+    const orderData = {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      courier: deliveryType === 'speedy' ? 'Speedy' : 'ЕКОНТ',
+      city: formData.city,
+      address: formData.officeAddress,
+      extraInfo: formData.notes
+    };
+
+    try {
+      // 2. Изпращаме ги към твоя Google Script URL
+      await fetch('https://script.google.com/macros/s/AKfycbyDdNUemGp5FkVO42KLh9idTQ2pImTtWWJYwLQjCuOWvzeFPBh1Je_Nk13cY9LaQ8FGaA/exec', {
+        method: 'POST',
+        mode: 'no-cors', // Важно за работа с Google Scripts
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      // 3. Ако всичко е наред, показваме съобщението за успех
+      setOrderSubmitted(true);
+      
+      // Изчистваме формата след 5 секунди
+      setTimeout(() => {
+        setOrderSubmitted(false);
+        setFormData({ name: '', phone: '', email: '', city: '', officeAddress: '', notes: '' });
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Грешка при изпращане:', error);
+      alert('Възникна грешка. Моля, опитайте пак!');
+    }
   };
+
+
 
   return (
     <section id="order" ref={sectionRef} className="py-8 lg:py-20 bg-[#FDFBF6]">
