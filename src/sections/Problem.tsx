@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Smartphone, Brain, Users, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export default function Problem() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -24,66 +24,39 @@ export default function Problem() {
   }, []);
 
   const problems = [
-    {
-      icon: Smartphone,
-      title: 'Твърде много екрани',
-      description: 'Децата прекарват средно 7 часа на ден пред екрани'
-    },
-    {
-      icon: Brain,
-      title: 'Загуба на креативност',
-      description: 'Дигиталните игри ограничават въображението'
-    },
-    {
-      icon: Users,
-      title: 'Липса на социални умения',
-      description: 'Недостатъчно време за игра с други деца и родители'
-    }
+    { title: 'Твърде много екрани', description: 'Децата прекарват средно 7 часа на ден пред екрани' },
+    { title: 'Загуба на креативност', description: 'Дигиталните игри ограничават въображението' },
+    { title: 'Липса на социални умения', description: 'Недостатъчно време за игра с други деца и родители' },
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-[#FDFBF6] relative overflow-hidden">
-      {/* Diagonal accent */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#FDFBF6] to-transparent" />
-      
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Image */}
-          <div className="reveal opacity-0 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="/gallery-3.jpg" 
-                alt="Майка и дете играят заедно" 
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0C6D3E]/30 to-transparent" />
+    <section ref={sectionRef} className="py-8 lg:py-20 bg-[#FDFBF6]">
+      <div className="w-full max-w-7xl mx-auto px-3 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
+          {/* Image */}
+          <div className="reveal opacity-0 relative order-2 lg:order-1">
+            <div className="relative rounded-xl lg:rounded-2xl overflow-hidden shadow-xl lg:shadow-2xl">
+              <img src="/real-1.jpg" alt="Майка и дете" className="w-full h-auto object-cover" />
             </div>
-            
-            {/* Floating card */}
-            <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl max-w-xs">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-[#E4F22B] rounded-full flex items-center justify-center">
-                  <span className="text-2xl">💡</span>
-                </div>
+            <div className="absolute -bottom-3 -right-3 lg:-bottom-6 lg:-right-6 bg-white rounded-lg lg:rounded-xl p-3 lg:p-4 shadow-xl max-w-[180px] lg:max-w-[240px]">
+              <div className="flex items-center gap-2 lg:gap-3">
+                <div className="w-8 h-8 lg:w-12 lg:h-12 bg-[#E4F22B] rounded-full flex items-center justify-center text-base lg:text-xl">💡</div>
                 <div>
-                  <p className="font-bold text-[#0C6D3E]">Решението?</p>
-                  <p className="text-sm text-[#0C6D3E]/70">Игра, която сближава!</p>
+                  <p className="font-bold text-[#0C6D3E] text-xs lg:text-base">Решението?</p>
+                  <p className="text-[10px] lg:text-sm text-[#0C6D3E]/70">Игра, която сближава!</p>
                 </div>
               </div>
             </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#E4F22B] rounded-full opacity-30 blur-2xl" />
           </div>
           
-          {/* Right Column - Content */}
-          <div className="space-y-8">
+          {/* Content */}
+          <div className="space-y-4 lg:space-y-6 order-1 lg:order-2">
             <div className="reveal opacity-0">
-              <span className="inline-block bg-[#F6A377]/20 text-[#F6A377] px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <span className="inline-block bg-[#F6A377]/20 text-[#F6A377] px-3 lg:px-4 py-1 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium mb-2 lg:mb-3">
                 Проблемът
               </span>
               <h2 
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C6D3E] leading-tight"
+                className="text-xl lg:text-4xl xl:text-5xl leading-tight font-bold text-[#0C6D3E]"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Твърде Много Екрани,
@@ -91,22 +64,19 @@ export default function Problem() {
               </h2>
             </div>
             
-            <p className="reveal opacity-0 text-lg text-[#0C6D3E]/80 stagger-1">
-              В днешния дигитален свят, децата прекарват все повече време пред таблети и телефони. Това ограничава тяхната креативност, фината моторика и социалните умения. Нуждаят се от нещо реално, нещо, което могат да докоснат и създадат със собствените си ръце.
+            <p className="reveal opacity-0 text-sm lg:text-lg text-[#0C6D3E]/80 stagger-1">
+              В днешния дигитален свят децата прекарват все повече време пред таблети и телефони. Това ограничава тяхната креативност, фината моторика и социалните умения.
             </p>
             
-            <div className="reveal opacity-0 space-y-4 stagger-2">
+            <div className="reveal opacity-0 space-y-2 lg:space-y-3 stagger-2">
               {problems.map((problem, index) => (
-                <div 
-                  key={index}
-                  className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <X className="w-6 h-6 text-red-500" />
+                <div key={index} className="flex items-start gap-2.5 lg:gap-4 p-2.5 lg:p-4 bg-white rounded-lg lg:rounded-xl shadow-sm">
+                  <div className="w-7 h-7 lg:w-10 lg:h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <X className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-red-500" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#0C6D3E] mb-1">{problem.title}</h3>
-                    <p className="text-sm text-[#0C6D3E]/70">{problem.description}</p>
+                    <h3 className="font-semibold text-[#0C6D3E] text-xs lg:text-base">{problem.title}</h3>
+                    <p className="text-[11px] lg:text-sm text-[#0C6D3E]/70">{problem.description}</p>
                   </div>
                 </div>
               ))}
