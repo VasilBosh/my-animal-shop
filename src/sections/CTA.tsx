@@ -57,7 +57,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     try {
       // 3. Изпращаме ги към твоя Google Script URL
-      await fetch('https://script.google.com/macros/library/d/1qO79rmfqRxM2jetKpMmWf4MSuC-uEKeEiFrncikA_-a7g1ynMHMogilS/7', {
+      await fetch('https://script.google.com/macros/s/AKfycbxdfX08UpaXeSCSQrSJFl82hQQzFsGH7q5B3ZIdA98myswoJfNNdsJdRw215ard8qCHeA/exec', {
         method: 'POST',
         mode: 'no-cors', // Важно за работа с Google Scripts
         headers: {
