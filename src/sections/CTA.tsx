@@ -40,8 +40,11 @@ export default function CTA() {
 
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. Ако всичко е наред, показваме съобщението за успех
+      setOrderSubmitted(true);
     
-    // 1. Подготвяме данните от формата за изпращане
+    // 2. Подготвяме данните от формата за изпращане
     const orderData = {
       name: formData.name,
       phone: formData.phone,
@@ -53,7 +56,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     };
 
     try {
-      // 2. Изпращаме ги към твоя Google Script URL
+      // 3. Изпращаме ги към твоя Google Script URL
       await fetch('https://script.google.com/macros/library/d/1qO79rmfqRxM2jetKpMmWf4MSuC-uEKeEiFrncikA_-a7g1ynMHMogilS/7', {
         method: 'POST',
         mode: 'no-cors', // Важно за работа с Google Scripts
@@ -63,10 +66,8 @@ const handleSubmit = async (e: React.FormEvent) => {
         body: JSON.stringify(orderData),
       });
 
-      // 3. Ако всичко е наред, показваме съобщението за успех
-      setOrderSubmitted(true);
       
-      // Изчистваме формата след 5 секунди
+      // 4. Изчистваме формата след 5 секунди
       setTimeout(() => {
         setOrderSubmitted(false);
         setFormData({ name: '', phone: '', email: '', city: '', officeAddress: '', notes: '' });
