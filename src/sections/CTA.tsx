@@ -42,6 +42,19 @@ export default function CTA() {
     // 1. ВЕДНАГА показваме изскачащия прозорец
     setOrderSubmitted(true);
 
+
+// --- НОВО: СИГНАЛ КЪМ FACEBOOK ПИКСЕЛА ---
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Purchase', {
+        value: 14.99,
+        currency: 'EUR', // Използваме EUR, както е в сайта ти
+        content_name: 'Комплект Животинки',
+        content_type: 'product'
+      });
+    }
+    // ------------------------------------------
+
+
     const orderData = {
       name: formData.name,
       phone: formData.phone,
